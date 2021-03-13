@@ -1,5 +1,7 @@
 export const moviesData = [
   {
+    id: 1,
+    price: 18,
     Title: "Avatar",
     Year: "2009",
     TimeStamp: 1614962855028,
@@ -32,6 +34,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 2,
+    price: 28,
     Title: "I Am Legend",
     Year: "2007",
     TimeStamp: 1615394912248,
@@ -65,6 +69,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 3,
+    price: 10,
     Title: "300",
     Year: "2006",
     TimeStamp: 1614531150293,
@@ -96,6 +102,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 4,
+    price: 17,
     Title: "The Avengers",
     Year: "2012",
     TimeStamp: 1613667376118,
@@ -128,6 +136,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 5,
+    price: 25,
     Title: "The Wolf of Wall Street",
     Year: "2013",
     TimeStamp: 1613235403895,
@@ -160,6 +170,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 6,
+    price: 24,
     Title: "Interstellar",
     Year: "2014",
     TimeStamp: 1612889819111,
@@ -192,6 +204,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 7,
+    price: 17,
     Title: "Game of Thrones",
     Year: "2011–",
     TimeStamp: 1612630637873,
@@ -225,6 +239,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 8,
+    price: 40,
     Title: "Vikings",
     Year: "2013–",
     TimeStamp: 1612025853880,
@@ -259,6 +275,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 9,
+    price: 50,
     Title: "Gotham",
     Year: "2014–",
     TimeStamp: 1611593867779,
@@ -292,6 +310,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 10,
+    price: 15,
     Title: "Power",
     Year: "2014–",
     TimeStamp: 1611075491468,
@@ -325,6 +345,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 11,
+    price: 28,
     Title: "Narcos",
     Year: "2015–",
     TimeStamp: 1610384306304,
@@ -358,6 +380,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 12,
+    price: 20,
     Title: "Breaking Bad",
     Year: "2008–2013",
     TimeStamp: 1609520318432,
@@ -391,6 +415,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 13,
+    price: 35,
     ComingSoon: true,
     Title: "Doctor Strange",
     TimeStamp: 1613753934061,
@@ -424,6 +450,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 14,
+    price: 50,
     ComingSoon: true,
     Title: "Rogue One: A Star Wars Story",
     TimeStamp: 1608483552475,
@@ -458,6 +486,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 15,
+    price: 60,
     ComingSoon: true,
     Title: "Assassin's Creed",
     TimeStamp: 1606755568183,
@@ -492,6 +522,8 @@ export const moviesData = [
     ],
   },
   {
+    id: 16,
+    price: 32,
     ComingSoon: true,
     Title: "Luke Cage",
     TimeStamp: 1611680383029,

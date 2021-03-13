@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { moviesData } from "../movies";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { Modal } from "react-bootstrap";
 import moment from "moment";
 import Carsouel from "./Carousell";
+import ReusableButton from "./ReusableButton";
 
-const MoviesList = () => {
+const MoviesList = (props) => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("Title");
   const [sortType, setSortType] = useState("aec");
-  const [startDate, setStartDate] = useState(new Date(1605027709078));
-  const [endDate, setEndDate] = useState(1615395967440);
+  const [price, setPrice] = useState("low");
+
   const [showModal, setShowModal] = useState(false);
   const [carouselData, setCarouselData] = useState([]);
   const handleCloseModal = () => {
@@ -20,11 +21,6 @@ const MoviesList = () => {
   const onShowModal = (imagesData) => {
     setCarouselData(imagesData);
     setShowModal(true);
-  };
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
   };
 
   var filteredData = [];
@@ -35,11 +31,6 @@ const MoviesList = () => {
       book.Plot.toLowerCase().includes(search.toLowerCase())
     );
   });
-  filteredData = filteredData.filter(
-    (book) =>
-      new Date(book.TimeStamp) >= new Date(startDate) &&
-      new Date(book.TimeStamp) <= new Date(endDate)
-  );
 
   filteredData = filteredData.sort(function (a, b) {
     let nameA = a && a[sortBy] && a[sortBy].toUpperCase(); // ignore upper and lowercase
@@ -64,6 +55,14 @@ const MoviesList = () => {
     return 0;
   });
 
+  filteredData = filteredData.sort(function (a, b) {
+    if (price === "low") {
+      return parseFloat(a.price) - parseFloat(b.price);
+    } else {
+      return parseFloat(b.price) - parseFloat(a.price);
+    }
+  });
+
   return (
     <>
       <div className="container">
@@ -71,23 +70,14 @@ const MoviesList = () => {
           <div className="col-md-3 mt-2">
             <label for="email">Search</label>
             <input
-              placeholder=" Movie title description Director"
+              placeholder=" Movie title  Director"
               type="text"
               className="form-control"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <div className="col-md-3 mt-2">
-            <label for="email">Filter by date</label>
-            <DatePicker
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              selectsRange
-            />
-          </div>
+
           <div className="col-md-3 mt-2">
             <label for="email">Sort by</label>
             <select
@@ -108,49 +98,72 @@ const MoviesList = () => {
               <option value="dec">Descending</option>
             </select>
           </div>
+          <div className="col-md-3 mt-2">
+            <label for="email">Sort By Price</label>
+            <select
+              className="browser-default custom-select"
+              onChange={(e) => setPrice(e.target.value)}
+            >
+              <option value="low">Low To High</option>
+              <option value="high">High To Low</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div className="container-fluid">
         <div className="row">
-          {filteredData.map((movie, index) => (
-            <div
-              className="col-sm-3 m-5 d-flex align-items-stretch"
-              key={index}
-              onClick={() => onShowModal(movie.Images)}
-            >
-              <div className="card">
-                <img
-                  src={movie.Images[0]}
-                  className="card-img-top fixed-img"
-                  alt=""
-                />
-                <div className="card-body">
-                  {
-                    <span>
-                      {Array.from(Array(movie.imdbRating), (e, i) => {
-                        return (
-                          <span key={i}>
-                            <span className="fa fa-star checked"></span>
-                          </span>
-                        );
-                      })}
-                    </span>
-                  }
+          {filteredData.length !== 0 ? (
+            <>
+              {filteredData.map((movie, index) => (
+                <div
+                  className="col-sm-3 m-5 d-flex align-items-stretch"
+                  key={index}
+                >
+                  <div className="card">
+                    <img
+                      onClick={() => onShowModal(movie.Images)}
+                      src={movie.Images[0]}
+                      className="card-img-top fixed-img"
+                      alt=""
+                    />
+                    <div className="card-body">
+                      {
+                        <span>
+                          {Array.from(Array(movie.imdbRating), (e, i) => {
+                            return (
+                              <span key={i}>
+                                <span className="fa fa-star checked"></span>
+                              </span>
+                            );
+                          })}
+                        </span>
+                      }
 
-                  <h6>{movie.imdbRating} Star Rating</h6>
-                  <h5 className="card-title">{movie.Title}</h5>
-                  <h6>
-                    Released :{moment(movie.TimeStamp).format("MMMM Do YYYY")}
-                  </h6>
-                  <h6>Runtime : {movie.Runtime}</h6>
-                  <h6>Director : {movie.Director}</h6>
-                  {/* {calc(4)} */}
-                  <p className="card-text">{movie.Plot}</p>
+                      <h6>{movie.imdbRating} Star Rating</h6>
+                      <h5 className="card-title">{movie.Title}</h5>
+                      <h6>
+                        Released :
+                        {moment(movie.TimeStamp).format("MMMM Do YYYY")}
+                      </h6>
+
+                      <h6>Director : {movie.Director}</h6>
+                      <h6>Price : {movie.price} $</h6>
+                      <ReusableButton
+                        addToGlobalCart={(count) =>
+                          props.addToGlobalCart(count, movie)
+                        }
+                      />
+                      {/* {calc(4)} */}
+                      {/* <p className="card-text">{movie.Plot}</p> */}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            </>
+          ) : (
+            <h2 className="m-5">No Records Found</h2>
+          )}
         </div>
       </div>
       <Modal show={showModal} onHide={handleCloseModal} centered>
