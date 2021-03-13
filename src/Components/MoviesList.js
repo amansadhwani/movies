@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { moviesData } from "../movies";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -62,6 +62,10 @@ const MoviesList = (props) => {
       return parseFloat(b.price) - parseFloat(a.price);
     }
   });
+
+  useEffect(() => {
+    props.clearCart();
+  }, []);
 
   return (
     <>

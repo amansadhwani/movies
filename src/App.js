@@ -40,6 +40,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={MoviesList}>
             <MoviesList
+              clearCart={() => setCartData([])}
               addToGlobalCart={(count, movieData) =>
                 addToGlobalCart(count, movieData)
               }
