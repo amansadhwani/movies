@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Hey, let me know what I should look into for my story. I believe mine is dependent on yours, and I’ll likely be working on the validation and loading states — things like handling the same month being selected, invalid date formats, and anything else you think I should consider.
+
+Also, how do we estimate story points here? Does 8 story points roughly translate to 8 days, or is it based on complexity/effort?
+
+I’m relatively new to Angular since most of my experience has been with React, so I may need a little help initially. I’d appreciate it if you could review my code along the way to make sure I’m following the right Angular patterns and not going down the wrong path.
+
 ### `npm start`
 
 Runs the app in the development mode.\
