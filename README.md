@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Thanks! Sounds good. I’ll get started and we can sync up as needed. Appreciate the help!
 
 
 ### `npm start`
