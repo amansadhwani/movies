@@ -6,6 +6,32 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+You are working inside an existing micro-app repository. Before writing any new code, thoroughly explore the codebase and identify all reusable patterns, conventions, and architectural decisions.
+
+Please do the following:
+
+1. Analyze the repository structure, folder organization, naming conventions, and overall architecture.
+2. Identify reusable patterns for:
+   - Component structure and styling
+   - State management
+   - API calls / data fetching
+   - Error handling
+   - Routing / navigation
+   - Form handling and validation
+   - Authentication / authorization (if present)
+   - Shared utilities, hooks, services, or helpers
+   - Testing patterns
+   - Type definitions and interfaces
+   - Configuration and environment handling
+3. Summarize the key patterns you found (briefly list them) so I can confirm you understood the codebase.
+4. When implementing new user stories, strictly follow the existing patterns. Do not introduce new libraries, architectures, or styles unless the existing code already uses them.
+5. Match the existing code style, file naming, folder placement, and level of abstraction.
+6. Reuse existing components, hooks, utilities, and services whenever possible instead of creating new ones.
+7. If a pattern is unclear or missing for a required feature, ask me before inventing a new approach.
+
+After your analysis, wait for me to provide the user stories. Then implement them one by one (or as a coherent set) while staying fully consistent with the existing micro-app patterns.
+
+Start by exploring the codebase now and give me a short summary of the main patterns you observed.
 
 
 
